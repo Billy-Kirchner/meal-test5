@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -50,5 +51,13 @@ public class IngredientController {
         newIngredient.calculateTotalFat();
         newIngredient.calculateNetCarbohydrate();
         return "redirect:";
+    }
+
+    @RequestMapping(value = "view/{id}", method = RequestMethod.GET)
+    public String viewIngredient (Model model, @PathVariable(value = "id") int id) {
+
+        model.addAttribute("ingredient", ingredientDao.findById(id).orElse(null));
+
+        return "ingredient/view";
     }
 }

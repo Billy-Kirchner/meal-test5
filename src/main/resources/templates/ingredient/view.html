@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+
+<h1 th:text="${ingredient.name}">Title</h1>
+
+<table class="table">
+
+    <tr>
+        <th>Nutritional Value</th>
+        <th>Amount per Serving</th>
+    </tr>
+
+    <tr>
+        <td>Calories</td>
+        <td th:text="${ingredient.calories}"></td>
+    </tr>
+
+    <tr>
+        <td>Saturated Fat</td>
+        <td th:text="${ingredient.saturatedFat}"></td>
+    </tr>
+
+    <tr>
+        <td>Polyunsaturated Fat</td>
+        <td th:text="${ingredient.polyUnsaturatedFat}"></td>
+    </tr>
+
+    <tr>
+        <td>Monounsaturated Fat</td>
+        <td th:text="${ingredient.monoUnsaturatedFat}"></td>
+    </tr>
+
+    <tr>
+        <td>Trans Fat</td>
+        <td th:text="${ingredient.transFat}"></td>
+    </tr>
+
+    <tr>
+        <td>Total Fat</td>
+        <td th:text="${ingredient.totalFat}"></td>
+    </tr>
+
+    <tr>
+        <td>Cholesterol</td>
+        <td th:text="${ingredient.cholesterol}"></td>
+    </tr>
+
+    <tr>
+        <td>Sodiums</td>
+        <td th:text="${ingredient.sodium}"></td>
+    </tr>
+
+    <tr>
+        <td>Potassium</td>
+        <td th:text="${ingredient.potassium}"></td>
+    </tr>
+
+    <tr>
+        <td>Total Carbohydrate</td>
+        <td th:text="${ingredient.totalCarbohydrate}"></td>
+    </tr>
+
+    <tr>
+        <td>Dietary Fiber</td>
+        <td th:text="${ingredient.dietaryFiber}"></td>
+    </tr>
+
+    <tr>
+        <td>Sugar</td>
+        <td th:text="${ingredient.sugar}"></td>
+    </tr>
+
+    <tr>
+        <td>Net Carbohydrate</td>
+        <td th:text="${ingredient.netCarbohydrate}"></td>
+    </tr>
+
+    <tr>
+        <td>Protein</td>
+        <td th:text="${ingredient.protein}"></td>
+    </tr>
+
+</table>
+
+
+
+
+</body>
+</html>
