@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<h1 th:text="${title}">Default Title</h1>
+
+
+<form method="post" style="max-width:600px;" th:object="${ingredient}">
+
+    <div class="form-group">
+        <label th:for="name">Name</label>
+        <input class="form-control" th:field="*{name}" />
+        <span th:errors="*{name}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="calories">Calories</label>
+        <input class="form-control" th:field="*{calories}" />
+        <span th:errors="*{calories}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="saturatedFat">Saturated Fat</label>
+        <input class="form-control" th:field="*{saturatedFat}" />
+        <span th:errors="*{saturatedFat}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="polyUnsaturatedFat">Polyunsaturated Fat</label>
+        <input class="form-control" th:field="*{polyUnsaturatedFat}" />
+        <span th:errors="*{polyUnsaturatedFat}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="monoUnsaturatedFat">Monounsaturated Fat</label>
+        <input class="form-control" th:field="*{monoUnsaturatedFat}" />
+        <span th:errors="*{monoUnsaturatedFat}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="transFat">Trans Fat</label>
+        <input class="form-control" th:field="*{transFat}" />
+        <span th:errors="*{transFat}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="cholesterol">Cholesterol</label>
+        <input class="form-control" th:field="*{cholesterol}" />
+        <span th:errors="*{cholesterol}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="sodium">Sodium</label>
+        <input class="form-control" th:field="*{sodium}" />
+        <span th:errors="*{sodium}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="potassium">Potassium</label>
+        <input class="form-control" th:field="*{potassium}" />
+        <span th:errors="*{potassium}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="totalCarbohydrate">Total Carbohydrate</label>
+        <input class="form-control" th:field="*{totalCarbohydrate}" />
+        <span th:errors="*{totalCarbohydrate}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="dietaryFiber">Dietary Fiber</label>
+        <input class="form-control" th:field="*{dietaryFiber}" />
+        <span th:errors="*{dietaryFiber}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="sugar">Sugar</label>
+        <input class="form-control" th:field="*{sugar}" />
+        <span th:errors="*{sugar}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="protein">Protein</label>
+        <input class="form-control" th:field="*{protein}" />
+        <span th:errors="*{protein}" class="error"></span>
+    </div>
+
+    <input type="submit" value="Add Ingredient" />
+
+
+</form>
+
+
+</body>
+</html>
