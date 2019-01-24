@@ -4,7 +4,7 @@
 
 <body class="container">
 
-
+<nav th:replace="fragments :: navigation"></nav>
 <h1 th:text="${ingredient.name}">Title</h1>
 
 <table class="table">
@@ -85,6 +85,8 @@
     </tr>
 
 </table>
+
+<a th:href="@{'/ingredient/remove/' + ${ingredient.id}}">Remove Ingredient?</a>
 
 
 

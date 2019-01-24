@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+
+<h1 th:text="${ingredient.name} + ' has been removed from ingredient list.'">Title</h1>
+
+<a href="/ingredient/">Back to Ingredient List</a>
+
+</body>
+</html>
