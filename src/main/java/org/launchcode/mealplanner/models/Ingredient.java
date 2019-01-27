@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 
 import javax.persistence.GeneratedValue;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 public class Ingredient {
@@ -16,7 +17,7 @@ public class Ingredient {
     private int id;
 
     @NotNull
-    @Size(min=3, max=20, message = "Name must be between 3 and 20 characters")
+    @Size(min=3, max=30, message = "Name must be between 3 and 30 characters")
     private String name;
     @NotNull
     private double calories;
@@ -44,6 +45,9 @@ public class Ingredient {
     private double netCarbohydrate;
     @NotNull
     private double protein;
+
+    @ManyToMany(mappedBy = "ingredients")
+    private List<Meal> meals;
 
 
 

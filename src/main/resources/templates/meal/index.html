@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<h1 th:text="${title}">Default Title</h1>
+
+<p th:unless="${ingredients} and ${ingredients.size()}">Currently no meals created</p>
+
+
+<ul th:each="meal : ${meals}">
+    <a th:text="${meal.name}" th:href="@{'/meal/build/' + ${meal.id}}"></a>
+</ul>
+
+<a href="/meal/create">Create New Meal</a>
+
+</body>
+</html>

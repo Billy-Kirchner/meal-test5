@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<h1 th:text="${title}">Default Title</h1>
+
+<h2>Nutrition Totals</h2>
+<p>Under Construction</p>
+
+<h2>Meal Components</h2>
+
+<p th:unless="${form.meal.components} and ${form.meal.components.size()}">Meal currently has no components</p>
+
+
+<form method="post" style="max-width:600px;" th:object="${form}">
+    <label th:for="ingredientId">Select Ingredient</label>
+    <select class="form-control" th:field="*{ingredientId}">
+        <option th:each="ingredient : *{ingredients}" th:value="${ingredient.id}" th:text="${ingredient.name}"></option>
+    </select>
+    <span th:errors="*{ingredientId}" class="error"></span>
+    <input type="hidden" name="mealId" th:value="*{meal.id}" />
+
+    <label th:for="servings">Servings</label>
+    <input class="form-control" th:field="*{servings}" />
+
+    <input type="submit" value="Add Component">
+
+</form>
+
+</body>
+</html>
