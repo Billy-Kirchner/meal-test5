@@ -64,13 +64,13 @@ public class IngredientController {
         return "ingredient/view";
     }
 
-    @RequestMapping(value = "remove/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
     public String removeIngredient( Model model, @PathVariable(value ="id") int id) {
 
         model.addAttribute("ingredient", ingredientDao.findById(id).orElse(null));
 
         ingredientDao.deleteById(id);
 
-        return "ingredient/remove";
+        return "ingredient/delete";
     }
 }
