@@ -7,10 +7,7 @@ import javax.validation.constraints.NotNull;
 
 import javax.persistence.GeneratedValue;
 import javax.validation.constraints.Size;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Entity
 public class Meal {
@@ -23,7 +20,7 @@ public class Meal {
     @Size(min=3, max=30,message= "Name must be between 3 and 30 characters")
     private String name;
 
-    private HashMap<Ingredient, Double> components;
+//    private HashMap<Ingredient, Double> components = new HashMap<>();
 
     private double calories;
     private double saturatedFat;
@@ -45,6 +42,7 @@ public class Meal {
 
     public Meal (String name) {
         this.name = name;
+
     }
 
     public Meal () {
@@ -59,12 +57,20 @@ public class Meal {
         this.name = name;
     }
 
-    public HashMap<Ingredient, Double> getComponents() {
+/*    public HashMap<Ingredient, Double> getComponents() {
         return components;
     }
 
     public void setComponents(HashMap<Ingredient, Double> components) {
         this.components = components;
+    }*/
+
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 
     public int getId() {
@@ -127,8 +133,12 @@ public class Meal {
         return protein;
     }
 
-    public void addComponent (Ingredient ingredient, Double servings) {
+/*    public void addComponent (Ingredient ingredient, Double servings) {
         components.put(ingredient, servings);
+   }*/
+
+    public void addIngredient (Ingredient ingredient) {
+        ingredients.add(ingredient);
     }
 
     public void calculateTotals () {

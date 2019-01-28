@@ -8,12 +8,19 @@
 
 <h1 th:text="${title}">Default Title</h1>
 
+<a th:href="@{'/meal/delete/' + ${form.meal.id}}">Delete Meal?</a>
+
 <h2>Nutrition Totals</h2>
 <p>Under Construction</p>
 
 <h2>Meal Components</h2>
 
-<p th:unless="${form.meal.components} and ${form.meal.components.size()}">Meal currently has no components</p>
+<!--<p th:unless="${form.meal.components} and ${form.meal.components.size()}">Meal currently has no components</p>-->
+<p th:unless="${form.meal.ingredients} and ${form.meal.ingredients.size()}">Meal currently has no ingredients</p>
+
+<ul th:each="ingredient : ${form.meal.ingredients}">
+    <li th:text="${ingredient.name}"></li>
+</ul>
 
 
 <form method="post" style="max-width:600px;" th:object="${form}">

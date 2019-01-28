@@ -44,7 +44,7 @@ public class IngredientController {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add New Ingredient");
-            model.addAttribute(new Ingredient());
+
             return "ingredient/add";
         }
 

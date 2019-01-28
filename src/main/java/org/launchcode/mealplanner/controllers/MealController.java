@@ -53,7 +53,6 @@ public class MealController {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Create New Meal");
-            model.addAttribute(new Meal());
             return "meal/create";
         }
 
@@ -61,7 +60,7 @@ public class MealController {
 
 
 
-        return "redirect: /meal/build/" + newMeal.getId();
+        return "redirect:/meal/build/" + newMeal.getId();
     }
 
     @RequestMapping(value = "build/{id}", method = RequestMethod.GET)
@@ -81,7 +80,6 @@ public class MealController {
 
 
         if (errors.hasErrors()){
-            model.addAttribute("form", form);
             model.addAttribute("title", "Build Meal: " + mealDao.findById(form.getMealId()).orElse(null).getName());
             return "meal/bulid";
         }
@@ -90,11 +88,25 @@ public class MealController {
         Meal currentMeal = mealDao.findById(form.getMealId()).orElse(null);
         Double servings = form.getServings();
 
-        currentMeal.addComponent(newIngredient, servings);
+        currentMeal.addIngredient(newIngredient);
+        mealDao.save(currentMeal);
 
 
+/*        currentMeal.addComponent(newIngredient, servings);
+        mealDao.save(currentMeal);*/
 
-        return "meal/build";
 
+        return "redirect:/meal/build/" + currentMeal.getId();
+
+    }
+
+    @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
+    public String removeIngredient( Model model, @PathVariable(value ="id") int id) {
+
+        model.addAttribute("meal", mealDao.findById(id).orElse(null));
+
+        mealDao.deleteById(id);
+
+        return "meal/delete";
     }
 }
