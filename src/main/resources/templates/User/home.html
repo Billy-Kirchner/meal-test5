@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<h1 th:text="${title}">Default Title</h1>
+
+<div>
+    <a href="/ingredient/">Ingredients</a>
+</div>
+
+<div>
+    <a href="/meal/">Meals</a>
+</div>
+
+
+</body>
+</html>
