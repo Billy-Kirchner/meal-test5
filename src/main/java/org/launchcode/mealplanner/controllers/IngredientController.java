@@ -65,7 +65,7 @@ public class IngredientController {
     }
 
     @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
-    public String removeIngredient( Model model, @PathVariable(value ="id") int id) {
+    public String deleteIngredient( Model model, @PathVariable(value ="id") int id) {
 
         model.addAttribute("ingredient", ingredientDao.findById(id).orElse(null));
 

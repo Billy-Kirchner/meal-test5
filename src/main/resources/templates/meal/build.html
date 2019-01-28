@@ -11,7 +11,85 @@
 <a th:href="@{'/meal/delete/' + ${form.meal.id}}">Delete Meal?</a>
 
 <h2>Nutrition Totals</h2>
-<p>Under Construction</p>
+
+<table class="table">
+
+    <tr>
+        <th>Nutritional Value</th>
+        <th>Meal Total</th>
+    </tr>
+
+    <tr>
+        <td>Calories</td>
+        <td th:text="${form.meal.calories}"></td>
+    </tr>
+
+    <tr>
+        <td>Saturated Fat</td>
+        <td th:text="${form.meal.saturatedFat}"></td>
+    </tr>
+
+    <tr>
+        <td>Polyunsaturated Fat</td>
+        <td th:text="${form.meal.polyUnsaturatedFat}"></td>
+    </tr>
+
+    <tr>
+        <td>Monounsaturated Fat</td>
+        <td th:text="${form.meal.monoUnsaturatedFat}"></td>
+    </tr>
+
+    <tr>
+        <td>Trans Fat</td>
+        <td th:text="${form.meal.transFat}"></td>
+    </tr>
+
+    <tr>
+        <td>Total Fat</td>
+        <td th:text="${form.meal.totalFat}"></td>
+    </tr>
+
+    <tr>
+        <td>Cholesterol</td>
+        <td th:text="${form.meal.cholesterol}"></td>
+    </tr>
+
+    <tr>
+        <td>Sodium</td>
+        <td th:text="${form.meal.sodium}"></td>
+    </tr>
+
+    <tr>
+        <td>Potassium</td>
+        <td th:text="${form.meal.potassium}"></td>
+    </tr>
+
+    <tr>
+        <td>Total Carbohydrate</td>
+        <td th:text="${form.meal.totalCarbohydrate}"></td>
+    </tr>
+
+    <tr>
+        <td>Dietary Fiber</td>
+        <td th:text="${form.meal.dietaryFiber}"></td>
+    </tr>
+
+    <tr>
+        <td>Sugar</td>
+        <td th:text="${form.meal.sugar}"></td>
+    </tr>
+
+    <tr>
+        <td>Net Carbohydrate</td>
+        <td th:text="${form.meal.netCarbohydrate}"></td>
+    </tr>
+
+    <tr>
+        <td>Protein</td>
+        <td th:text="${form.meal.protein}"></td>
+    </tr>
+
+</table>
 
 <h2>Meal Components</h2>
 

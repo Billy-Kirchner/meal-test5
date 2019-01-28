@@ -89,6 +89,7 @@ public class MealController {
         Double servings = form.getServings();
 
         currentMeal.addIngredient(newIngredient);
+        currentMeal.calculateTotals();
         mealDao.save(currentMeal);
 
 
@@ -101,7 +102,7 @@ public class MealController {
     }
 
     @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
-    public String removeIngredient( Model model, @PathVariable(value ="id") int id) {
+    public String deleteMeal( Model model, @PathVariable(value ="id") int id) {
 
         model.addAttribute("meal", mealDao.findById(id).orElse(null));
 

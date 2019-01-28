@@ -157,12 +157,30 @@ public class Meal {
         netCarbohydrate = 0;
         protein = 0;
 
+        for( Ingredient ingredient : ingredients) {
+            calories += ingredient.getCalories();
+            saturatedFat += ingredient.getSaturatedFat();
+            polyUnsaturatedFat += ingredient.getPolyUnsaturatedFat();
+            monoUnsaturatedFat += ingredient.getMonoUnsaturatedFat();
+            transFat += ingredient.getTransFat();
+            totalFat += ingredient.getTotalFat();
+            cholesterol += ingredient.getCholesterol();
+            sodium += ingredient.getSodium();
+            potassium += ingredient.getPotassium();
+            totalCarbohydrate += ingredient.getTotalCarbohydrate();
+            dietaryFiber += ingredient.getDietaryFiber();
+            sugar += ingredient.getSugar();
+            netCarbohydrate += ingredient.getNetCarbohydrate();
+            protein += ingredient.getProtein();
+        }
+
 /*        Iterator it = components.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry)it.next();
             calories += (pair.getKey().getCalories * pair.getValue());
             saturatedFat += (pair.getKey().getSaturatedFat * pair.getValue());
         }*/
+
 
     }
 }
