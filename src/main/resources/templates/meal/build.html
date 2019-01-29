@@ -8,7 +8,7 @@
 
 <h1 th:text="${title}">Default Title</h1>
 
-<a th:href="@{'/meal/delete/' + ${form.meal.id}}">Delete Meal?</a>
+<a th:href="@{'/meal/delete/' + ${form.meal.id}}">Delete Meal</a>
 
 <h2>Nutrition Totals</h2>
 
@@ -98,6 +98,7 @@
 
 <ul th:each="ingredient : ${form.meal.ingredients}">
     <li th:text="${ingredient.name}"></li>
+    <!--<a th:href="@{'/meal/remove-ingredient/' + ${form.ingredientId}">Remove?</a>-->
 </ul>
 
 

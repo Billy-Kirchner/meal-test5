@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+
+<h1 th:text="${day.name} + ' has been deleted from your schedule.'"></h1>
+
+<a href="/day/">Back to Day Planner</a>
+
+</body>
+</html>

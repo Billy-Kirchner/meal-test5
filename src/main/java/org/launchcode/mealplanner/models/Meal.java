@@ -40,6 +40,9 @@ public class Meal {
     @ManyToMany
     private List<Ingredient> ingredients;
 
+    @ManyToMany(mappedBy = "meals")
+    private List<Day> days;
+
     public Meal (String name) {
         this.name = name;
 

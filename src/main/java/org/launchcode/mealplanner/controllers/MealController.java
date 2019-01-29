@@ -39,9 +39,9 @@ public class MealController {
 
 
     @RequestMapping(value = "create", method = RequestMethod.GET)
-    public String displayBuildMealForm(Model model) {
+    public String displayCreateMealForm(Model model) {
 
-        model.addAttribute("title", "Build Meal");
+        model.addAttribute("title", "Create New Meal");
         model.addAttribute(new Meal());
 
         return "meal/create";
@@ -81,7 +81,7 @@ public class MealController {
 
         if (errors.hasErrors()){
             model.addAttribute("title", "Build Meal: " + mealDao.findById(form.getMealId()).orElse(null).getName());
-            return "meal/bulid";
+            return "meal/build";
         }
 
         Ingredient newIngredient = ingredientDao.findById(form.getIngredientId()).orElse(null);

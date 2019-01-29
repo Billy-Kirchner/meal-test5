@@ -8,14 +8,14 @@
 
 <h1 th:text="${title}">Default Title</h1>
 
-<p th:unless="${meals} and ${meals.size()}">Currently no meals created</p>
+<p th:unless="${days} and ${days.size()}">Currently no days planned</p>
 
 
-<ul th:each="meal : ${meals}">
-    <a th:text="${meal.name}" th:href="@{'/meal/build/' + ${meal.id}}"></a>
+<ul th:each="day : ${days}">
+    <a th:text="${day.name}" th:href="@{'/day/build/' + ${day.id}}"></a>
 </ul>
 
-<a href="/meal/create">Create New Meal</a>
+<a href="/day/create">Create New Day</a>
 
 </body>
 </html>
