@@ -7,7 +7,9 @@ import javax.validation.constraints.NotNull;
 
 import javax.persistence.GeneratedValue;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Entity
 public class Ingredient {
@@ -46,10 +48,11 @@ public class Ingredient {
     @NotNull
     private double protein;
 
-    @ManyToMany(mappedBy = "ingredients")
-    private List<Meal> meals;
+/*    @ManyToMany(mappedBy = "ingredients")
+    private List<Meal> meals;*/
 
-
+    @OneToMany
+    private List<Component> components = new ArrayList<>();
 
     public Ingredient (String name, double calories, double saturatedFat, double polyUnsaturatedFat, double monoUnsaturatedFat, double transFat,
                        double cholesterol, double sodium, double potassium, double totalCarbohydrate, double dietaryFiber, double sugar, double protein) {

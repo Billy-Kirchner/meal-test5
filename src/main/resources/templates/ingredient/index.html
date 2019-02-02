@@ -8,14 +8,34 @@
 
 <h1 th:text="${title}">Default Title</h1>
 
-<p th:unless="${ingredients} and ${ingredients.size()}">Currently no available ingredients</p>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <p th:unless="${ingredients} and ${ingredients.size()}">Currently no available ingredients</p>
 
 
-<ul th:each="ingredient : ${ingredients}">
-    <a th:text="${ingredient.name}" th:href="@{'/ingredient/view/' + ${ingredient.id}}"></a>
-</ul>
+            <ul th:each="ingredient : ${ingredients}">
+                <a th:text="${ingredient.name}" th:href="@{'/ingredient/view/' + ${ingredient.id}}"></a>
+            </ul>
+        </div>
 
-<a href="/ingredient/add">Add New Ingredient</a>
+        <div class="col-sm-2">
+
+        </div>
+
+        <div class="col-sm-4">
+            <a href="/ingredient/add">Add New Ingredient</a>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+
+
 
 </body>
 </html>

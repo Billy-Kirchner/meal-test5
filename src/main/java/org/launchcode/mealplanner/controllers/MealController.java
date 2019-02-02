@@ -1,8 +1,10 @@
 package org.launchcode.mealplanner.controllers;
 
 
+import org.launchcode.mealplanner.models.Component;
 import org.launchcode.mealplanner.models.Ingredient;
 import org.launchcode.mealplanner.models.Meal;
+import org.launchcode.mealplanner.models.data.ComponentDao;
 import org.launchcode.mealplanner.models.data.IngredientDao;
 import org.launchcode.mealplanner.models.data.MealDao;
 import org.launchcode.mealplanner.models.forms.BuildMealForm;
@@ -27,6 +29,9 @@ public class MealController {
 
     @Autowired
     private IngredientDao ingredientDao;
+
+    @Autowired
+    private ComponentDao componentDao;
 
     @RequestMapping(value = "")
     public String index(Model model) {
@@ -87,8 +92,10 @@ public class MealController {
         Ingredient newIngredient = ingredientDao.findById(form.getIngredientId()).orElse(null);
         Meal currentMeal = mealDao.findById(form.getMealId()).orElse(null);
         Double servings = form.getServings();
-
-        currentMeal.addIngredient(newIngredient);
+        Component newComponent = new Component(newIngredient, servings);
+        componentDao.save(newComponent);
+//        currentMeal.addIngredient(newIngredient);
+        currentMeal.addComponent(newComponent);
         currentMeal.calculateTotals();
         mealDao.save(currentMeal);
 

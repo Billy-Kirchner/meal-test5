@@ -20,7 +20,11 @@ public class Meal {
     @Size(min=3, max=30,message= "Name must be between 3 and 30 characters")
     private String name;
 
-//    private HashMap<Ingredient, Double> components = new HashMap<>();
+    @OneToMany
+    private List<Component> components = new ArrayList<>();
+
+/*    @ManyToMany
+    private List<Ingredient> ingredients;*/
 
     private double calories;
     private double saturatedFat;
@@ -36,9 +40,6 @@ public class Meal {
     private double sugar;
     private double netCarbohydrate;
     private double protein;
-
-    @ManyToMany
-    private List<Ingredient> ingredients;
 
     @ManyToMany(mappedBy = "meals")
     private List<Day> days;
@@ -68,12 +69,13 @@ public class Meal {
         this.components = components;
     }*/
 
-    public List<Ingredient> getIngredients() {
-        return ingredients;
+
+    public List<Component> getComponents() {
+        return components;
     }
 
-    public void setIngredients(List<Ingredient> ingredients) {
-        this.ingredients = ingredients;
+    public void setComponents(List<Component> components) {
+        this.components = components;
     }
 
     public int getId() {
@@ -136,13 +138,14 @@ public class Meal {
         return protein;
     }
 
-/*    public void addComponent (Ingredient ingredient, Double servings) {
-        components.put(ingredient, servings);
-   }*/
-
-    public void addIngredient (Ingredient ingredient) {
+/*    public void addIngredient (Ingredient ingredient) {
         ingredients.add(ingredient);
+    }*/
+
+    public void addComponent (Component component) {
+        components.add(component);
     }
+
 
     public void calculateTotals () {
         calories = 0;
@@ -160,7 +163,9 @@ public class Meal {
         netCarbohydrate = 0;
         protein = 0;
 
-        for( Ingredient ingredient : ingredients) {
+
+
+/*        for( Ingredient ingredient : ingredients) {
             calories += ingredient.getCalories();
             saturatedFat += ingredient.getSaturatedFat();
             polyUnsaturatedFat += ingredient.getPolyUnsaturatedFat();
@@ -175,6 +180,41 @@ public class Meal {
             sugar += ingredient.getSugar();
             netCarbohydrate += ingredient.getNetCarbohydrate();
             protein += ingredient.getProtein();
+        }*/
+
+        for( Component component : components) {
+            Ingredient ingredient = component.getIngredient();
+            Double servings = component.getServings();
+
+/*            calories += ingredient.getCalories();
+            saturatedFat += ingredient.getSaturatedFat();
+            polyUnsaturatedFat += ingredient.getPolyUnsaturatedFat();
+            monoUnsaturatedFat += ingredient.getMonoUnsaturatedFat();
+            transFat += ingredient.getTransFat();
+            totalFat += ingredient.getTotalFat();
+            cholesterol += ingredient.getCholesterol();
+            sodium += ingredient.getSodium();
+            potassium += ingredient.getPotassium();
+            totalCarbohydrate += ingredient.getTotalCarbohydrate();
+            dietaryFiber += ingredient.getDietaryFiber();
+            sugar += ingredient.getSugar();
+            netCarbohydrate += ingredient.getNetCarbohydrate();
+            protein += ingredient.getProtein();*/
+
+            calories += (ingredient.getCalories() * servings);
+            saturatedFat += (ingredient.getSaturatedFat() * servings);
+            polyUnsaturatedFat += (ingredient.getPolyUnsaturatedFat() * servings);
+            monoUnsaturatedFat += (ingredient.getMonoUnsaturatedFat() * servings);
+            transFat += (ingredient.getTransFat() * servings);
+            totalFat += (ingredient.getTotalFat() * servings);
+            cholesterol += (ingredient.getCholesterol() * servings);
+            sodium += (ingredient.getSodium() * servings);
+            potassium += (ingredient.getPotassium() * servings);
+            totalCarbohydrate += (ingredient.getTotalCarbohydrate() * servings);
+            dietaryFiber += (ingredient.getDietaryFiber() * servings);
+            sugar += (ingredient.getSugar() * servings);
+            netCarbohydrate += (ingredient.getNetCarbohydrate() * servings);
+            protein += (ingredient.getProtein() * servings);
         }
 
 /*        Iterator it = components.entrySet().iterator();
