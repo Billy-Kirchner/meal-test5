@@ -4,8 +4,10 @@
 
 <body class="container">
 
+<div class="alert alert-success">
+    <h1 th:text="${ingredient.name} + ' has been deleted from your ingredient list.'"></h1>
+</div>
 
-<h1 th:text="${ingredient.name} + ' has been deleted from your ingredient list.'"></h1>
 
 <a href="/ingredient/">Back to Ingredient List</a>
 

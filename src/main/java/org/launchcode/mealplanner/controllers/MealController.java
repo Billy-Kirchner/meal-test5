@@ -7,6 +7,7 @@ import org.launchcode.mealplanner.models.Meal;
 import org.launchcode.mealplanner.models.data.ComponentDao;
 import org.launchcode.mealplanner.models.data.IngredientDao;
 import org.launchcode.mealplanner.models.data.MealDao;
+import org.launchcode.mealplanner.models.forms.BuildDayForm;
 import org.launchcode.mealplanner.models.forms.BuildMealForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.info.ProjectInfoProperties;
@@ -108,6 +109,22 @@ public class MealController {
 
     }
 
+/*    @RequestMapping(value = "build/remove-component/{id}", method = RequestMethod.POST)
+    public String removeComponentFromMeal(Model model, @ModelAttribute @Valid BuildMealForm form, @ModelAttribute @Valid Component component, Errors errors) {
+
+//        Component discardedComponent = componentDao.findById(form.getComponentId()).orElse(null);
+        Component discardedComponent = componentDao.findById(component.getId()).orElse(null);
+        Meal currentMeal = mealDao.findById(form.getMealId()).orElse(null);
+
+        currentMeal.removeComponent(discardedComponent);
+        currentMeal.calculateTotals();
+        mealDao.save(currentMeal);
+
+        return "redirect:/meal/build/" + currentMeal.getId();
+    }*/
+
+
+
     @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
     public String deleteMeal( Model model, @PathVariable(value ="id") int id) {
 
@@ -117,4 +134,6 @@ public class MealController {
 
         return "meal/delete";
     }
+
+
 }

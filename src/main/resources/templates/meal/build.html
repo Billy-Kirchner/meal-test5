@@ -16,7 +16,7 @@
         <div class="col-sm-4">
             <h2>Nutrition Totals</h2>
 
-            <table class="table">
+            <table class="table-bordered">
 
                 <tr>
                     <th>Nutritional Value</th>
@@ -122,6 +122,13 @@
                 <tr th:each="component : ${form.meal.components}">
                     <td th:text="${component.ingredient.name}"></td>
                     <td th:text="${component.servings}"></td>
+                    <td>
+                        <!--<a th:href="@{'/meal/build/' + ${form.meal.id}}">Remove Component</a>-->
+                        <form method="post" style="max-width:600px;" th:object="${form}" th:action="@{'remove-component/' + ${component.id}}">
+                            <input type="hidden" th:value="${form.meal.id}" />
+                            <input type="submit" value="Remove Component" />
+                        </form>
+                    </td>
                 </tr>
 
 

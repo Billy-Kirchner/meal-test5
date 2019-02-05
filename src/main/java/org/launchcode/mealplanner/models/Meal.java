@@ -146,6 +146,10 @@ public class Meal {
         components.add(component);
     }
 
+    public void removeComponent (Component component) {
+        components.remove(component);
+    }
+
 
     public void calculateTotals () {
         calories = 0;

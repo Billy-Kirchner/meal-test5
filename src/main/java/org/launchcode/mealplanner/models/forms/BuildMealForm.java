@@ -19,6 +19,9 @@ public class BuildMealForm {
     @NotNull
     private int ingredientId;
 
+    @NotNull
+    private int componentId;
+
     public BuildMealForm (Meal meal, Iterable<Ingredient> ingredients) {
         this.meal = meal;
         this.ingredients = ingredients;
@@ -58,6 +61,14 @@ public class BuildMealForm {
 
     public void setIngredientId(int ingredientId) {
         this.ingredientId = ingredientId;
+    }
+
+    public int getComponentId() {
+        return componentId;
+    }
+
+    public void setComponentId(int componentId) {
+        this.componentId = componentId;
     }
 
     public double getServings() {
