@@ -14,86 +14,90 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-4">
-            <h2>Nutrition Totals</h2>
+            <button data-toggle="collapse" data-target="#nutrition">Nutrition Totals</button>
+            <div id="nutrition" class="collapse">
+                <h2>Nutrition Totals</h2>
 
-            <table class="table-bordered">
+                <table class="table-bordered">
 
-                <tr>
-                    <th>Nutritional Value</th>
-                    <th>Daily Total</th>
-                </tr>
+                    <tr>
+                        <th>Nutritional Value</th>
+                        <th>Daily Total</th>
+                    </tr>
 
-                <tr>
-                    <td>Calories</td>
-                    <td th:text="${form.day.calories}"></td>
-                </tr>
+                    <tr>
+                        <td>Calories</td>
+                        <td th:text="${form.day.calories}"></td>
+                    </tr>
 
-                <tr>
-                    <td>Saturated Fat</td>
-                    <td th:text="${form.day.saturatedFat}"></td>
-                </tr>
+                    <tr>
+                        <td>Saturated Fat</td>
+                        <td th:text="${form.day.saturatedFat}"></td>
+                    </tr>
 
-                <tr>
-                    <td>Polyunsaturated Fat</td>
-                    <td th:text="${form.day.polyUnsaturatedFat}"></td>
-                </tr>
+                    <tr>
+                        <td>Polyunsaturated Fat</td>
+                        <td th:text="${form.day.polyUnsaturatedFat}"></td>
+                    </tr>
 
-                <tr>
-                    <td>Monounsaturated Fat</td>
-                    <td th:text="${form.day.monoUnsaturatedFat}"></td>
-                </tr>
+                    <tr>
+                        <td>Monounsaturated Fat</td>
+                        <td th:text="${form.day.monoUnsaturatedFat}"></td>
+                    </tr>
 
-                <tr>
-                    <td>Trans Fat</td>
-                    <td th:text="${form.day.transFat}"></td>
-                </tr>
+                    <tr>
+                        <td>Trans Fat</td>
+                        <td th:text="${form.day.transFat}"></td>
+                    </tr>
 
-                <tr>
-                    <td>Total Fat</td>
-                    <td th:text="${form.day.totalFat}"></td>
-                </tr>
+                    <tr>
+                        <td>Total Fat</td>
+                        <td th:text="${form.day.totalFat}"></td>
+                    </tr>
 
-                <tr>
-                    <td>Cholesterol</td>
-                    <td th:text="${form.day.cholesterol}"></td>
-                </tr>
+                    <tr>
+                        <td>Cholesterol</td>
+                        <td th:text="${form.day.cholesterol}"></td>
+                    </tr>
 
-                <tr>
-                    <td>Sodium</td>
-                    <td th:text="${form.day.sodium}"></td>
-                </tr>
+                    <tr>
+                        <td>Sodium</td>
+                        <td th:text="${form.day.sodium}"></td>
+                    </tr>
 
-                <tr>
-                    <td>Potassium</td>
-                    <td th:text="${form.day.potassium}"></td>
-                </tr>
+                    <tr>
+                        <td>Potassium</td>
+                        <td th:text="${form.day.potassium}"></td>
+                    </tr>
 
-                <tr>
-                    <td>Total Carbohydrate</td>
-                    <td th:text="${form.day.totalCarbohydrate}"></td>
-                </tr>
+                    <tr>
+                        <td>Total Carbohydrate</td>
+                        <td th:text="${form.day.totalCarbohydrate}"></td>
+                    </tr>
 
-                <tr>
-                    <td>Dietary Fiber</td>
-                    <td th:text="${form.day.dietaryFiber}"></td>
-                </tr>
+                    <tr>
+                        <td>Dietary Fiber</td>
+                        <td th:text="${form.day.dietaryFiber}"></td>
+                    </tr>
 
-                <tr>
-                    <td>Sugar</td>
-                    <td th:text="${form.day.sugar}"></td>
-                </tr>
+                    <tr>
+                        <td>Sugar</td>
+                        <td th:text="${form.day.sugar}"></td>
+                    </tr>
 
-                <tr>
-                    <td>Net Carbohydrate</td>
-                    <td th:text="${form.day.netCarbohydrate}"></td>
-                </tr>
+                    <tr>
+                        <td>Net Carbohydrate</td>
+                        <td th:text="${form.day.netCarbohydrate}"></td>
+                    </tr>
 
-                <tr>
-                    <td>Protein</td>
-                    <td th:text="${form.day.protein}"></td>
-                </tr>
+                    <tr>
+                        <td>Protein</td>
+                        <td th:text="${form.day.protein}"></td>
+                    </tr>
 
-            </table>
+                </table>
+            </div>
+
         </div>
 
         <div class="col-sm-2"></div>
@@ -110,15 +114,18 @@
 
 
             <form method="post" style="max-width:600px;" th:object="${form}">
-                <label th:for="mealId">Select Meal</label>
-                <select class="form-control" th:field="*{mealId}">
-                    <option th:each="meal : *{meals}" th:value="${meal.id}" th:text="${meal.name}"></option>
-                </select>
-                <span th:errors="*{mealId}" class="error"></span>
-                <input type="hidden" name="dayId" th:value="*{day.id}" />
+                <div class="form-group">
+                    <label th:for="mealId">Select Meal</label>
+                    <select class="form-control" th:field="*{mealId}">
+                        <option th:each="meal : *{meals}" th:value="${meal.id}" th:text="${meal.name}"></option>
+                    </select>
+                    <span th:errors="*{mealId}" class="error"></span>
+                    <input type="hidden" name="dayId" th:value="*{day.id}" />
 
 
-                <input type="submit" value="Add Meal">
+                    <input type="submit" value="Add Meal">
+                </div>
+
 
             </form>
         </div>

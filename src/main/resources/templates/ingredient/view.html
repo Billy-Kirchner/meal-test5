@@ -5,88 +5,103 @@
 <body class="container">
 
 <nav th:replace="fragments :: navigation"></nav>
-<h1 th:text="${ingredient.name}">Title</h1>
+<div class="container">
+    <div class="row justify-content-center">
+        <h1 th:text="${ingredient.name}">Title</h1>
+    </div>
 
-<table class="table-bordered">
+    <div class="row justify-content-center">
+        <a th:href="@{'/ingredient/delete/' + ${ingredient.id}}" class="button">Delete Ingredient</a>
+    </div>
+</div>
 
-    <tr>
-        <th>Nutritional Value</th>
-        <th>Amount per Serving</th>
-    </tr>
+<div class="row justify-content-center">
+    <table class="table-bordered">
 
-    <tr>
-        <td>Calories</td>
-        <td th:text="${ingredient.calories}"></td>
-    </tr>
+        <tr>
+            <th>Nutritional Value</th>
+            <th>Amount per Serving</th>
+        </tr>
 
-    <tr>
-        <td>Saturated Fat</td>
-        <td th:text="${ingredient.saturatedFat}"></td>
-    </tr>
+        <tr>
+            <td>Calories</td>
+            <td th:text="${ingredient.calories}"></td>
+        </tr>
 
-    <tr>
-        <td>Polyunsaturated Fat</td>
-        <td th:text="${ingredient.polyUnsaturatedFat}"></td>
-    </tr>
+        <tr>
+            <td>Saturated Fat</td>
+            <td th:text="${ingredient.saturatedFat}"></td>
+        </tr>
 
-    <tr>
-        <td>Monounsaturated Fat</td>
-        <td th:text="${ingredient.monoUnsaturatedFat}"></td>
-    </tr>
+        <tr>
+            <td>Polyunsaturated Fat</td>
+            <td th:text="${ingredient.polyUnsaturatedFat}"></td>
+        </tr>
 
-    <tr>
-        <td>Trans Fat</td>
-        <td th:text="${ingredient.transFat}"></td>
-    </tr>
+        <tr>
+            <td>Monounsaturated Fat</td>
+            <td th:text="${ingredient.monoUnsaturatedFat}"></td>
+        </tr>
 
-    <tr>
-        <td>Total Fat</td>
-        <td th:text="${ingredient.totalFat}"></td>
-    </tr>
+        <tr>
+            <td>Trans Fat</td>
+            <td th:text="${ingredient.transFat}"></td>
+        </tr>
 
-    <tr>
-        <td>Cholesterol</td>
-        <td th:text="${ingredient.cholesterol}"></td>
-    </tr>
+        <tr>
+            <td>Total Fat</td>
+            <td th:text="${ingredient.totalFat}"></td>
+        </tr>
 
-    <tr>
-        <td>Sodium</td>
-        <td th:text="${ingredient.sodium}"></td>
-    </tr>
+        <tr>
+            <td>Cholesterol</td>
+            <td th:text="${ingredient.cholesterol}"></td>
+        </tr>
 
-    <tr>
-        <td>Potassium</td>
-        <td th:text="${ingredient.potassium}"></td>
-    </tr>
+        <tr>
+            <td>Sodium</td>
+            <td th:text="${ingredient.sodium}"></td>
+        </tr>
 
-    <tr>
-        <td>Total Carbohydrate</td>
-        <td th:text="${ingredient.totalCarbohydrate}"></td>
-    </tr>
+        <tr>
+            <td>Potassium</td>
+            <td th:text="${ingredient.potassium}"></td>
+        </tr>
 
-    <tr>
-        <td>Dietary Fiber</td>
-        <td th:text="${ingredient.dietaryFiber}"></td>
-    </tr>
+        <tr>
+            <td>Total Carbohydrate</td>
+            <td th:text="${ingredient.totalCarbohydrate}"></td>
+        </tr>
 
-    <tr>
-        <td>Sugar</td>
-        <td th:text="${ingredient.sugar}"></td>
-    </tr>
+        <tr>
+            <td>Dietary Fiber</td>
+            <td th:text="${ingredient.dietaryFiber}"></td>
+        </tr>
 
-    <tr>
-        <td>Net Carbohydrate</td>
-        <td th:text="${ingredient.netCarbohydrate}"></td>
-    </tr>
+        <tr>
+            <td>Sugar</td>
+            <td th:text="${ingredient.sugar}"></td>
+        </tr>
 
-    <tr>
-        <td>Protein</td>
-        <td th:text="${ingredient.protein}"></td>
-    </tr>
+        <tr>
+            <td>Net Carbohydrate</td>
+            <td th:text="${ingredient.netCarbohydrate}"></td>
+        </tr>
 
-</table>
+        <tr>
+            <td>Protein</td>
+            <td th:text="${ingredient.protein}"></td>
+        </tr>
 
-<a th:href="@{'/ingredient/delete/' + ${ingredient.id}}">Delete Ingredient</a>
+    </table>
+
+
+</div>
+
+<div class="row justify-content-center">
+
+</div>
+
 
 
 
