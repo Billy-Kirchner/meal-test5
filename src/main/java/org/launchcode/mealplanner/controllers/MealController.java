@@ -2,9 +2,11 @@ package org.launchcode.mealplanner.controllers;
 
 
 import org.launchcode.mealplanner.models.Component;
+import org.launchcode.mealplanner.models.Day;
 import org.launchcode.mealplanner.models.Ingredient;
 import org.launchcode.mealplanner.models.Meal;
 import org.launchcode.mealplanner.models.data.ComponentDao;
+import org.launchcode.mealplanner.models.data.DayDao;
 import org.launchcode.mealplanner.models.data.IngredientDao;
 import org.launchcode.mealplanner.models.data.MealDao;
 import org.launchcode.mealplanner.models.forms.BuildDayForm;
@@ -33,6 +35,9 @@ public class MealController {
 
     @Autowired
     private ComponentDao componentDao;
+
+    @Autowired
+    private DayDao dayDao;
 
     @RequestMapping(value = "")
     public String index(Model model) {
@@ -109,19 +114,20 @@ public class MealController {
 
     }
 
-/*    @RequestMapping(value = "build/remove-component/{id}", method = RequestMethod.POST)
-    public String removeComponentFromMeal(Model model, @ModelAttribute @Valid BuildMealForm form, @ModelAttribute @Valid Component component, Errors errors) {
+    @RequestMapping(value = "build/remove-component/{id}", method = RequestMethod.POST)
+    public String removeComponentFromMeal(Model model, @PathVariable(value="id") int id, @ModelAttribute @Valid BuildMealForm form, Errors errors) {
 
-//        Component discardedComponent = componentDao.findById(form.getComponentId()).orElse(null);
-        Component discardedComponent = componentDao.findById(component.getId()).orElse(null);
+
+        Component discardedComponent = componentDao.findById(id).orElse(null);
         Meal currentMeal = mealDao.findById(form.getMealId()).orElse(null);
 
         currentMeal.removeComponent(discardedComponent);
+        componentDao.delete(discardedComponent);
         currentMeal.calculateTotals();
         mealDao.save(currentMeal);
 
         return "redirect:/meal/build/" + currentMeal.getId();
-    }*/
+    }
 
 
 
@@ -129,6 +135,15 @@ public class MealController {
     public String deleteMeal( Model model, @PathVariable(value ="id") int id) {
 
         model.addAttribute("meal", mealDao.findById(id).orElse(null));
+        Meal deletedMeal = mealDao.findById(id).orElse(null);
+        for (Day day : dayDao.findAll()) {
+            if (day.getMeals().contains(deletedMeal)) {
+                day.removeMeal(deletedMeal);
+                day.calculateTotals();
+                dayDao.save(day);
+            }
+        }
+
 
         mealDao.deleteById(id);
 

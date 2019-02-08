@@ -7,6 +7,7 @@ import org.launchcode.mealplanner.models.data.DayDao;
 import org.launchcode.mealplanner.models.data.MealDao;
 import org.launchcode.mealplanner.models.forms.BuildDayForm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.info.ProjectInfoProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
@@ -86,6 +87,20 @@ public class DayController {
         currentDay.addMeal(newMeal);
         currentDay.calculateTotals();
 
+        dayDao.save(currentDay);
+
+        return "redirect:/day/build/" + currentDay.getId();
+    }
+
+    @RequestMapping(value = "build/remove-meal/{id}", method = RequestMethod.POST)
+    public String removeComponentFromMeal(Model model, @PathVariable(value="id") int id, @ModelAttribute @Valid BuildDayForm form) {
+
+
+        Meal discardedMeal = mealDao.findById(id).orElse(null);
+        Day currentDay = dayDao.findById(form.getDayId()).orElse(null);
+
+        currentDay.removeMeal(discardedMeal);
+        currentDay.calculateTotals();
         dayDao.save(currentDay);
 
         return "redirect:/day/build/" + currentDay.getId();

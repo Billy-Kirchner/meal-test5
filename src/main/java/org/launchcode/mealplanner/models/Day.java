@@ -183,6 +183,10 @@ public class Day {
         meals.add(meal);
     }
 
+    public void removeMeal(Meal meal) {
+        meals.remove(meal);
+    }
+
     public void calculateTotals() {
         calories = 0;
         saturatedFat = 0;

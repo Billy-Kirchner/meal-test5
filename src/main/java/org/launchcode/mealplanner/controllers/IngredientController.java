@@ -1,8 +1,14 @@
 package org.launchcode.mealplanner.controllers;
 
 
+import org.launchcode.mealplanner.models.Component;
+import org.launchcode.mealplanner.models.Day;
 import org.launchcode.mealplanner.models.Ingredient;
+import org.launchcode.mealplanner.models.Meal;
+import org.launchcode.mealplanner.models.data.ComponentDao;
+import org.launchcode.mealplanner.models.data.DayDao;
 import org.launchcode.mealplanner.models.data.IngredientDao;
+import org.launchcode.mealplanner.models.data.MealDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 
 
 @Controller
@@ -21,6 +28,15 @@ public class IngredientController {
 
     @Autowired
     private IngredientDao ingredientDao;
+
+    @Autowired
+    private MealDao mealDao;
+
+    @Autowired
+    private DayDao dayDao;
+
+    @Autowired
+    ComponentDao componentDao;
 
     @RequestMapping(value = "")
     public String index( Model model) {
@@ -68,6 +84,23 @@ public class IngredientController {
     public String deleteIngredient( Model model, @PathVariable(value ="id") int id) {
 
         model.addAttribute("ingredient", ingredientDao.findById(id).orElse(null));
+        Ingredient deletedIngredient = ingredientDao.findById(id).orElse(null);
+
+        for (Meal meal : mealDao.findAll()) {
+            for (Component component : meal.getComponents()) {
+                if (component.getIngredient() == deletedIngredient) {
+                    meal.removeComponent(component);
+                    componentDao.delete(component);
+                    meal.calculateTotals();
+                    mealDao.save(meal);
+                }
+            }
+        }
+
+        for (Day day : dayDao.findAll()) {
+            day.calculateTotals();
+            dayDao.save(day);
+        }
 
         ingredientDao.deleteById(id);
 

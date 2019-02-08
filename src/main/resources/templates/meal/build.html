@@ -130,7 +130,7 @@
                     <td>
                         <!--<a th:href="@{'/meal/build/' + ${form.meal.id}}">Remove Component</a>-->
                         <form method="post" style="max-width:600px;" th:object="${form}" th:action="@{'remove-component/' + ${component.id}}">
-                            <input type="hidden" th:value="${form.meal.id}" />
+                            <input type="hidden" name="mealId" th:value="*{meal.id}" />
                             <input type="submit" value="Remove Component" />
                         </form>
                     </td>

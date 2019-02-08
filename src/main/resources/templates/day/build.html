@@ -107,10 +107,30 @@
 
             <p th:unless="${form.day.meals} and ${form.day.meals.size()}">No meals currently planned for the day</p>
 
-            <ul th:each="meal : ${form.day.meals}">
+<!--            <ul th:each="meal : ${form.day.meals}">
                 <li th:text="${meal.name}"></li>
-                <!--<a th:href="@{'/meal/remove-ingredient/' + ${form.ingredientId}">Remove?</a>-->
-            </ul>
+                &lt;!&ndash;<a th:href="@{'/meal/remove-ingredient/' + ${form.ingredientId}">Remove?</a>&ndash;&gt;
+            </ul>-->
+
+            <table class="table" th:if="${form.day.meals} and ${form.day.meals.size()}">
+
+                <tr>
+                    <th>Meal</th>
+                </tr>
+
+                <tr th:each="meal : ${form.day.meals}">
+                    <td th:text="${meal.name}"></td>
+                    <td>
+                        <form method="post" style="max-width:600px;" th:object="${form}" th:action="@{'remove-meal/' + ${meal.id}}">
+                            <input type="hidden" name="dayId" th:value="*{day.id}" />
+                            <input type="submit" value="Remove Meal" />
+                        </form>
+                    </td>
+                </tr>
+
+
+
+            </table>
 
 
             <form method="post" style="max-width:600px;" th:object="${form}">
