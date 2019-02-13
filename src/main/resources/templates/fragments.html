@@ -17,25 +17,30 @@
 </head>
 <body>
 
-<nav th:fragment="navigation" class="navbar navbar-default bg-warning">
+
+<nav th:fragment="navigation" class="navbar navbar-expand-lg bg-dark">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="/">Meal Planner</a>
         </div>
 
-        <div class="nav navbar-left" >
+        <ul class="navbar-nav mr-auto" >
             <!--<a href="/" class="ml-10">Home</a> |-->
-            <a href="/ingredient">Ingredients</a> |
-            <a href="/meal">Meals</a> |
-            <a href="/day">Day Planner</a>
-        </div>
+            <li class="nav-item active"><a href="/ingredient">Ingredients</a></li>
+            <li class="nav-item">|||</li>
+            <li class="nav-item"><a href="/meal">Meals</a></li>
+            <li class="nav-item">|||</li>
+            <li class="nav-item"><a href="/day">Day Planner</a></li>
+        </ul>
 
         <div class="nav navbar-right">
             <a href="/register"><span class="glyphicon glyphicon-user"></span>Sign Up</a> |
             <a href="/login"><span class="glyphicon glyphicon-log-in"></span>Login</a>
         </div>
+    </div>
 
 </nav>
+
 
 </body>
 </html>

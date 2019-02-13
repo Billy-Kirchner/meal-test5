@@ -6,16 +6,28 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<h1 th:text="${title}">Default Title</h1>
+<div class="row justify-content-center">
+    <h1 th:text="${title}">Default Title</h1>
+</div>
 
-<p th:unless="${meals} and ${meals.size()}">Currently no meals created</p>
+
+<div class="row justify-content-left">
+    <div class="col-sm-4">
+        <a href="/meal/create" class="btn btn-primary btn-sm" role="button">Create New Meal</a>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-sm-4">
+        <p th:unless="${meals} and ${meals.size()}">Currently no meals created</p>
+        <ul th:each="meal : ${meals}">
+            <a th:text="${meal.name}" th:href="@{'/meal/build/' + ${meal.id}}"></a>
+        </ul>
+    </div>
+</div>
 
 
-<ul th:each="meal : ${meals}">
-    <a th:text="${meal.name}" th:href="@{'/meal/build/' + ${meal.id}}"></a>
-</ul>
 
-<a href="/meal/create">Create New Meal</a>
 
 </body>
 </html>

@@ -51,8 +51,8 @@ public class Ingredient {
 /*    @ManyToMany(mappedBy = "ingredients")
     private List<Meal> meals;*/
 
-    @OneToMany
-    private List<Component> components = new ArrayList<>();
+/*    @OneToMany
+    private List<Component> components = new ArrayList<>();*/
 
     public Ingredient (String name, double calories, double saturatedFat, double polyUnsaturatedFat, double monoUnsaturatedFat, double transFat,
                        double cholesterol, double sodium, double potassium, double totalCarbohydrate, double dietaryFiber, double sugar, double protein) {

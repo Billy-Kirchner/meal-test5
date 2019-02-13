@@ -6,16 +6,24 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<h1 th:text="${title}">Default Title</h1>
+<div class="row justify-content-center">
+    <h1 th:text="${title}">Default Title</h1>
+</div>
 
-<p th:unless="${days} and ${days.size()}">Currently no days planned</p>
+<div class="row justify-content-left">
+    <div class="col-sm-4">
+        <a href="/day/create" class="btn btn-primary btn-sm" role="button">Create New Day</a>
+    </div>
+</div>
 
-
-<ul th:each="day : ${days}">
-    <a th:text="${day.name}" th:href="@{'/day/build/' + ${day.id}}"></a>
-</ul>
-
-<a href="/day/create">Create New Day</a>
+<div class="row justify-content-center">
+    <div class="col-sm-4">
+        <p th:unless="${days} and ${days.size()}">Currently no days planned</p>
+        <ul th:each="day : ${days}">
+            <a th:text="${day.name}" th:href="@{'/day/build/' + ${day.id}}"></a>
+        </ul>
+    </div>
+</div>
 
 </body>
 </html>
